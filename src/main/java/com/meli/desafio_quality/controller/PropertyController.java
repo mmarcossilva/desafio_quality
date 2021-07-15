@@ -35,6 +35,13 @@ public class PropertyController {
                 HttpStatus.OK);
     }
 
+    @PostMapping("/largestRoom")
+    public ResponseEntity<String> findLargestRoom(@Valid @RequestBody PropertyFormDTO propertyFormDTO){
+        return new ResponseEntity<>(
+                "O maior cômodo é o: " + service.findLargestRoom(propertyFormDTO.convert()).getName(),
+                HttpStatus.OK);
+    }
+
 
 
 }

@@ -38,7 +38,7 @@ public class PropertyService {
     }
 
 
-    public Room getBiggestRoom(Property property){
+    public Room findLargestRoom(Property property){
         return property.getRooms()
                 .stream()
                 .max(Comparator.comparingDouble(this::getRoomArea))

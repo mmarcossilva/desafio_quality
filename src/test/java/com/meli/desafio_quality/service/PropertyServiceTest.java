@@ -67,7 +67,7 @@ class PropertyServiceTest {
 
     @Test
     void testGetBiggestRoom() {
-        assertSame(room1, this.propertyService.getBiggestRoom(property));
+        assertSame(room1, this.propertyService.findLargestRoom(property));
     }
 
     @Test
