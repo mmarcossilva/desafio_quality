@@ -28,6 +28,13 @@ public class PropertyController {
         return new ResponseEntity<>("A area total é: " + service.calculateAreaOfProperty(propertyFormDTO.convert()) ,HttpStatus.OK);
     }
 
+    @PostMapping("/value")
+    public ResponseEntity<String> getPropertyValue(@Valid @RequestBody PropertyFormDTO propertyFormDTO){
+        return new ResponseEntity<>(
+                "O valor da propriedade é: " + service.calculateValueOfProperty(propertyFormDTO.convert()),
+                HttpStatus.OK);
+    }
+
 
 
 }
