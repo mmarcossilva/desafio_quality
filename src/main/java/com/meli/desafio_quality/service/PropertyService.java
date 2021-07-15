@@ -1,5 +1,6 @@
 package com.meli.desafio_quality.service;
 
+import com.meli.desafio_quality.dtos.RoomWithAreaDTO;
 import com.meli.desafio_quality.exceptions.DistrictNotFoundException;
 import com.meli.desafio_quality.exceptions.PropertyWhithoutRoomsException;
 import com.meli.desafio_quality.models.District;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
@@ -50,4 +53,10 @@ public class PropertyService {
     }
 
 
+    public List<RoomWithAreaDTO> getRoomsWithArea(Property property) {
+        return property.getRooms().stream()
+                .map(room -> new RoomWithAreaDTO(room.getName(), room.getWidth(),
+                        room.getLength(), this.getRoomArea(room)))
+                .collect(Collectors.toList());
+    }
 }

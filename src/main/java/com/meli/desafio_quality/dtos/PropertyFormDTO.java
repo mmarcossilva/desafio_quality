@@ -4,7 +4,6 @@ import com.meli.desafio_quality.models.Property;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,9 +15,6 @@ public class PropertyFormDTO {
     @NotNull
     @Size(max = 45, message = "O comprimento do bairro não pode exceder 45 caracteres")
     private String prop_district;
-//    @NotNull(message = "O valor do metro quadrado do bairro não pode estar vazio")
-//    @Digits(integer = 13, fraction = 0)
-//    private BigDecimal value_district_m2;
     @NotNull
     @NotEmpty
     @Valid

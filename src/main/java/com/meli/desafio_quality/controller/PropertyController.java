@@ -1,6 +1,7 @@
 package com.meli.desafio_quality.controller;
 
 import com.meli.desafio_quality.dtos.PropertyFormDTO;
+import com.meli.desafio_quality.dtos.RoomWithAreaDTO;
 import com.meli.desafio_quality.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/property")
@@ -40,6 +42,11 @@ public class PropertyController {
         return new ResponseEntity<>(
                 "O maior cômodo é o: " + service.findLargestRoom(propertyFormDTO.convert()).getName(),
                 HttpStatus.OK);
+    }
+
+    @PostMapping("/rooms/area")
+    public ResponseEntity<List<RoomWithAreaDTO>> getRoom(@Valid @RequestBody PropertyFormDTO propertyFormDTO){
+        return new ResponseEntity<>(service.getRoomsWithArea(propertyFormDTO.convert()), HttpStatus.OK);
     }
 
 

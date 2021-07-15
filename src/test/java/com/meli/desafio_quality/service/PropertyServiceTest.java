@@ -1,5 +1,6 @@
 package com.meli.desafio_quality.service;
 
+import com.meli.desafio_quality.dtos.RoomWithAreaDTO;
 import com.meli.desafio_quality.exceptions.DistrictNotFoundException;
 import com.meli.desafio_quality.models.District;
 import com.meli.desafio_quality.models.Property;
@@ -17,6 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -73,5 +75,19 @@ class PropertyServiceTest {
     @Test
     void testGetRoomArea() {
         assertEquals(100, this.propertyService.getRoomArea(room1));
+    }
+
+    @Test
+    void testGetRoomsWithArea() {
+        List<RoomWithAreaDTO> rooms = this.propertyService.getRoomsWithArea(property);
+        double area1 = rooms.stream().filter(roomWithAreaDTO -> roomWithAreaDTO.getName().equals(room1.getName()))
+                .findFirst().orElse(null).getArea();
+        double area2 = rooms.stream().filter(roomWithAreaDTO -> roomWithAreaDTO.getName().equals(room2.getName()))
+                .findFirst().orElse(null).getArea();
+        double area3 = rooms.stream().filter(roomWithAreaDTO -> roomWithAreaDTO.getName().equals(room3.getName()))
+                .findFirst().orElse(null).getArea();
+        assertEquals(100, area1);
+        assertEquals(25, area2);
+        assertEquals(4, area3);
     }
 }
