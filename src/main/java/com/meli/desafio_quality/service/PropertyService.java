@@ -2,7 +2,7 @@ package com.meli.desafio_quality.service;
 
 import com.meli.desafio_quality.dtos.RoomWithAreaDTO;
 import com.meli.desafio_quality.exceptions.DistrictNotFoundException;
-import com.meli.desafio_quality.exceptions.PropertyWhithoutRoomsException;
+import com.meli.desafio_quality.exceptions.PropertyWithoutRoomsException;
 import com.meli.desafio_quality.models.District;
 import com.meli.desafio_quality.models.Property;
 import com.meli.desafio_quality.models.Room;
@@ -45,7 +45,7 @@ public class PropertyService {
         return property.getRooms()
                 .stream()
                 .max(Comparator.comparingDouble(this::getRoomArea))
-                .orElseThrow(PropertyWhithoutRoomsException::new);
+                .orElseThrow(PropertyWithoutRoomsException::new);
     }
 
     public double getRoomArea(Room room){
