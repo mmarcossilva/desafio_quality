@@ -27,7 +27,9 @@ public class PropertyController {
 
     @PostMapping("/totalArea")
     public ResponseEntity<String> getArea(@Valid @RequestBody PropertyFormDTO propertyFormDTO){
-        return new ResponseEntity<>("A area total é: " + service.calculateAreaOfProperty(propertyFormDTO.convert()) ,HttpStatus.OK);
+        return new ResponseEntity<>(
+                "A area total é: " + service.calculateAreaOfProperty(propertyFormDTO.convert()),
+                HttpStatus.OK);
     }
 
     @PostMapping("/value")
@@ -48,7 +50,5 @@ public class PropertyController {
     public ResponseEntity<List<RoomWithAreaDTO>> getRoom(@Valid @RequestBody PropertyFormDTO propertyFormDTO){
         return new ResponseEntity<>(service.getRoomsWithArea(propertyFormDTO.convert()), HttpStatus.OK);
     }
-
-
 
 }

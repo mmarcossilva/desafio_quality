@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PropertyFormDTO {
-    @NotNull(message = "O nome da propriedade não pode estar vazio.")
-    @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres")
-    @Pattern(regexp = "\\b[A-Z]\\w*\\b", message = "O nome da propriedade deve começar com uma letra maiúscula.")
+    @NotNull(message = "O nome da propriedade nao pode estar vazio.")
+    @Size(max = 30, message = "O comprimento do nome nao pode exceder 30 caracteres")
+    @Pattern(regexp = "^[A-Z][A-Za-z0-9_ ]*$", message = "O nome da propriedade deve comecar com uma letra maiuscula.")
     private String prop_name;
     @NotNull
-    @Size(max = 45, message = "O comprimento do bairro não pode exceder 45 caracteres")
+    @Size(max = 45, message = "O comprimento do bairro nao pode exceder 45 caracteres")
     private String prop_district;
     @NotNull
     @NotEmpty

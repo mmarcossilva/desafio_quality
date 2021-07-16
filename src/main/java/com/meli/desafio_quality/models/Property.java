@@ -1,6 +1,5 @@
 package com.meli.desafio_quality.models;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class Property {
